@@ -45,6 +45,7 @@ set(COMMON_SRC
     vk/vk_test.cpp
     vk/vk_test.h
     vk/vk_simple_triangle.cpp
+    vk/vk_multi_cmd_buffers.cpp
     test_common.cpp
     test_common.h
     apple/apple_platform.cpp

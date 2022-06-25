@@ -144,6 +144,7 @@ struct VulkanWindow : public GraphicsWindow
               const std::vector<VkCommandBuffer> &seccmds, VkQueue q, bool sync2);
   static void MultiPresent(VkQueue queue, std::vector<VulkanWindow *> windows);
   void Present(VkQueue q);
+  void Sync();
 
   // forward GraphicsWindow functions to internal window
   void Resize(int width, int height) { m_Win->Resize(width, height); }
@@ -192,6 +193,7 @@ struct VulkanGraphicsTest : public GraphicsTest
               const std::vector<VkCommandBuffer> &seccmds = {}, VulkanWindow *window = NULL,
               VkQueue q = VK_NULL_HANDLE, bool sync2 = false);
   void Present(VulkanWindow *window = NULL, VkQueue q = VK_NULL_HANDLE);
+  void Sync(VulkanWindow *window = NULL);
 
   VkPipelineShaderStageCreateInfo CompileShaderModule(
       const std::string &source_text, ShaderLang lang, ShaderStage stage,

@@ -178,7 +178,7 @@ bool AppleWindow::Update()
   while (true)
   {
     NS::Event *event = pSharedApplication->nextEventMatchingMask(
-                                                            NS::EventMaskAny,
+                                                            (int)NS::EventMaskAny,
                                                             NS::Date::distantPast(),
                                                             NS::DefaultRunLoopMode,
                                                             true);

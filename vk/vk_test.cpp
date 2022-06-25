@@ -810,6 +810,14 @@ void VulkanGraphicsTest::Present(VulkanWindow *window, VkQueue q)
   window->Present(q);
 }
 
+void VulkanGraphicsTest::Sync(VulkanWindow *window)
+{
+  if (window == NULL)
+    window = mainWindow;
+
+  window->Sync();
+}
+
 VkPipelineShaderStageCreateInfo VulkanGraphicsTest::CompileShaderModule(
     const std::string &source_text, ShaderLang lang, ShaderStage stage, const char *entry_point,
     const std::map<std::string, std::string> &macros, SPIRVTarget target)
@@ -1458,19 +1466,8 @@ void VulkanWindow::Present(VkQueue queue)
   PostPresent(vkr);
 }
 
-void VulkanWindow::PostPresent(VkResult vkr)
+void VulkanWindow::Sync()
 {
-  if(vkr == VK_SUBOPTIMAL_KHR || vkr == VK_ERROR_OUT_OF_DATE_KHR)
-  {
-    DestroySwapchain();
-    CreateSwapchain();
-  }
-  else if(vkr != VK_SUCCESS)
-  {
-    VkResult queuePresentError = vkr;
-    CHECK_VKR(queuePresentError);
-  }
-
   int pendingCount;
   do
   {
@@ -1509,6 +1506,22 @@ void VulkanWindow::PostPresent(VkResult vkr)
       fences.erase(*it);
     }
   } while(pendingCount > 0);
+}
+
+void VulkanWindow::PostPresent(VkResult vkr)
+{
+  if(vkr == VK_SUBOPTIMAL_KHR || vkr == VK_ERROR_OUT_OF_DATE_KHR)
+  {
+    DestroySwapchain();
+    CreateSwapchain();
+  }
+  else if(vkr != VK_SUCCESS)
+  {
+    VkResult queuePresentError = vkr;
+    CHECK_VKR(queuePresentError);
+  }
+
+  Sync();
 
   Acquire();
 }
