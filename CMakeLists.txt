@@ -6,40 +6,40 @@ set(COMMON_SRC
     3rdparty/volk/volk.h
     3rdparty/volk/volk.c
     3rdparty/VulkanMemoryAllocator/vk_mem_alloc.h
-    official/metal-cpp-extensions/AppKit/NSMenuItem.hpp
-    official/metal-cpp-extensions/AppKit/NSWindow.hpp
-    official/metal-cpp-extensions/AppKit/AppKit.hpp
-    official/metal-cpp-extensions/AppKit/NSRunningApplication.hpp
-    official/metal-cpp-extensions/AppKit/NSView.hpp
-    official/metal-cpp-extensions/AppKit/NSApplication.hpp
-    official/metal-cpp-extensions/AppKit/NSMenu.hpp
-    official/metal-cpp-extensions/AppKit/AppKitPrivate.hpp
-    official/metal-cpp-extensions/Foundation/NSString.hpp
-    official/metal-cpp-extensions/Foundation/NSDictionary.hpp
-    official/metal-cpp-extensions/Foundation/NSLock.hpp
-    official/metal-cpp-extensions/Foundation/NSProcessInfo.hpp
-    official/metal-cpp-extensions/Foundation/NSError.hpp
-    official/metal-cpp-extensions/Foundation/NSEvent.hpp
-    official/metal-cpp-extensions/Foundation/NSObjCRuntime.hpp
-    official/metal-cpp-extensions/Foundation/NSObject.hpp
-    official/metal-cpp-extensions/Foundation/NSNotification.hpp
-    official/metal-cpp-extensions/Foundation/NSPrivate.hpp
-    official/metal-cpp-extensions/Foundation/NSURL.hpp
-    official/metal-cpp-extensions/Foundation/NSAutoreleasePool.hpp
-    official/metal-cpp-extensions/Foundation/NSRange.hpp
-    official/metal-cpp-extensions/Foundation/NSTypes.hpp
-    official/metal-cpp-extensions/Foundation/NSData.hpp
-    official/metal-cpp-extensions/Foundation/NSNumber.hpp
-    official/metal-cpp-extensions/Foundation/Foundation.hpp
-    official/metal-cpp-extensions/Foundation/NSDate.hpp
-    official/metal-cpp-extensions/Foundation/NSDefines.hpp
-    official/metal-cpp-extensions/Foundation/NSBundle.hpp
-    official/metal-cpp-extensions/Foundation/NSEnumerator.hpp
-    official/metal-cpp-extensions/Foundation/NSArray.hpp
-    official/metal-cpp-extensions/QuartzCore/CADefines.hpp
-    official/metal-cpp-extensions/QuartzCore/CAMetalLayer.hpp
-    official/metal-cpp-extensions/QuartzCore/CAPrivate.hpp
-    official/metal-cpp-extensions/QuartzCore/QuartzCore.hpp
+    apple/official/AppKit/NSMenuItem.hpp
+    apple/official/AppKit/NSWindow.hpp
+    apple/official/AppKit/AppKit.hpp
+    apple/official/AppKit/NSRunningApplication.hpp
+    apple/official/AppKit/NSView.hpp
+    apple/official/AppKit/NSApplication.hpp
+    apple/official/AppKit/NSMenu.hpp
+    apple/official/AppKit/AppKitPrivate.hpp
+    apple/official/Foundation/NSString.hpp
+    apple/official/Foundation/NSDictionary.hpp
+    apple/official/Foundation/NSLock.hpp
+    apple/official/Foundation/NSProcessInfo.hpp
+    apple/official/Foundation/NSError.hpp
+    apple/official/Foundation/NSEvent.hpp
+    apple/official/Foundation/NSObjCRuntime.hpp
+    apple/official/Foundation/NSObject.hpp
+    apple/official/Foundation/NSNotification.hpp
+    apple/official/Foundation/NSPrivate.hpp
+    apple/official/Foundation/NSURL.hpp
+    apple/official/Foundation/NSAutoreleasePool.hpp
+    apple/official/Foundation/NSRange.hpp
+    apple/official/Foundation/NSTypes.hpp
+    apple/official/Foundation/NSData.hpp
+    apple/official/Foundation/NSNumber.hpp
+    apple/official/Foundation/Foundation.hpp
+    apple/official/Foundation/NSDate.hpp
+    apple/official/Foundation/NSDefines.hpp
+    apple/official/Foundation/NSBundle.hpp
+    apple/official/Foundation/NSEnumerator.hpp
+    apple/official/Foundation/NSArray.hpp
+    apple/official/QuartzCore/CADefines.hpp
+    apple/official/QuartzCore/CAMetalLayer.hpp
+    apple/official/QuartzCore/CAPrivate.hpp
+    apple/official/QuartzCore/QuartzCore.hpp
     vk/vk_helpers.cpp
     vk/vk_helpers.h
     vk/vk_test.cpp
@@ -77,7 +77,7 @@ set(LIBS ${COCOA_LIBRARY} ${OPENGL_LIBRARY} ${QUARTZCORE_LIBRARY})
 set(INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}
     /Users/jake/Workspace/personal/MoltenVK/MoltenVk/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/official/metal-cpp-extensions
+    ${CMAKE_CURRENT_SOURCE_DIR}/apple/official
    )
 
 target_include_directories(VulkanTriangle PRIVATE ${INCLUDE_DIRS})

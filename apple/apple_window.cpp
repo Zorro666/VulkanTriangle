@@ -1,7 +1,7 @@
 /******************************************************************************
 * The MIT License (MIT)
 *
-* Copyright (c) 2019-2021 Baldur Karlsson
+* Copyright (c) 2022 Baldur Karlsson
 *
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -26,8 +26,8 @@
 
 #define NS_PRIVATE_IMPLEMENTATION
 #define CA_PRIVATE_IMPLEMENTATION
-#include "AppKit/AppKit.hpp"
-#include "QuartzCore/QuartzCore.hpp"
+#include "official/AppKit/AppKit.hpp"
+#include "official/QuartzCore/QuartzCore.hpp"
 
 static NS::Application* pSharedApplication = NULL;
 MyAppDelegate *AppleWindow::pAppDelegate = NULL;
