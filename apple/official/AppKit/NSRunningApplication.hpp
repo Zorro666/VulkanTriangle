@@ -36,7 +36,7 @@ namespace NS
 		public:
 			static RunningApplication*	currentApplication();
 			String*						localizedName() const;
-      bool              finishedLaunching() const;
+			bool							finishedLaunching() const;
 	};
 }
 
@@ -52,5 +52,5 @@ _NS_INLINE NS::String* NS::RunningApplication::localizedName() const
 }
 _NS_INLINE bool NS::RunningApplication::finishedLaunching() const
 {
-  return Object::sendMessage< bool >( this, _APPKIT_PRIVATE_SEL( finishedLaunching ) );
+	return Object::sendMessage< bool >( this, _APPKIT_PRIVATE_SEL( finishedLaunching ) );
 }

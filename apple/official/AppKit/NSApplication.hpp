@@ -36,7 +36,7 @@ namespace NS
   extern "C" RunLoopMode const NSDefaultRunLoopMode;
   RunLoopMode const DefaultRunLoopMode = NSDefaultRunLoopMode;
 
-_NS_OPTIONS( NS::UInteger, WindowStyleMask )
+	_NS_OPTIONS( NS::UInteger, WindowStyleMask )
 	{
 		WindowStyleMaskBorderless	   = 0,
 		WindowStyleMaskTitled		   = ( 1 << 0 ),
@@ -84,7 +84,7 @@ _NS_OPTIONS( NS::UInteger, WindowStyleMask )
       NS::Event*    nextEventMatchingMask(int mask, NS::Date *expiration, NS::RunLoopMode mode, bool deqFlag);
       void          sendEvent(NS::Event* event);
 
-      void 					setDelegate( const ApplicationDelegate* pDelegate );
+			void 					setDelegate( const ApplicationDelegate* pDelegate );
 
 			bool					setActivationPolicy( ActivationPolicy activationPolicy );
 
@@ -92,7 +92,7 @@ _NS_OPTIONS( NS::UInteger, WindowStyleMask )
 
 			void					setMainMenu( const class Menu* pMenu );
 
-			NS::Array*		windows() const;
+			NS::Array*				windows() const;
 
       void          finishLaunching();
 			void					run();

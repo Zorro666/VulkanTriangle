@@ -31,12 +31,13 @@
 
 #include <CoreGraphics/CGGeometry.h>
 
+
 namespace NS
 {
 	class Window : public Referencing< Window >
 	{
 		public:
-      static Window*    alloc();
+			static Window*		alloc();
 			Window*				init( CGRect contentRect, WindowStyleMask styleMask, BackingStoreType backing, bool defer );
 
 			void				setContentView( const View* pContentView );
@@ -46,10 +47,11 @@ namespace NS
 			void				setTitle( const String* pTitle );
 
 			void				close();
-      bool        visible() const;
+			bool				visible() const;
 	};
 
 }
+
 
 _NS_INLINE NS::Window* NS::Window::alloc()
 {
@@ -68,7 +70,7 @@ _NS_INLINE void NS::Window::setContentView( const NS::View* pContentView )
 
 _NS_INLINE NS::View* NS::Window::contentView()
 {
-    return Object::sendMessage< View* >( this, _APPKIT_PRIVATE_SEL( contentView_ ) );
+	return Object::sendMessage< View* >( this, _APPKIT_PRIVATE_SEL( contentView_ ) );
 }
 
 _NS_INLINE void NS::Window::makeKeyAndOrderFront( const Object* pSender )
@@ -88,5 +90,5 @@ _NS_INLINE void NS::Window::close()
 
 _NS_INLINE bool NS::Window::visible() const
 {
-  return Object::sendMessage< bool >( this, _APPKIT_PRIVATE_SEL( visible_ ) );
+	return Object::sendMessage< bool >( this, _APPKIT_PRIVATE_SEL( visible_ ) );
 }

@@ -84,10 +84,10 @@ void main()
 
 #if defined(WIN32)
 #include "../win32/win32_window.h"
-#elif defined(__APPLE__)
-#include "../apple/apple_window.h"
 #elif defined(__linux__)
 #include "../linux/linux_window.h"
+#elif defined(__APPLE__)
+#include "../apple/apple_window.h"
 #else
 #error UNKNOWN PLATFORM
 #endif
@@ -143,14 +143,14 @@ void VulkanGraphicsTest::Prepare(int argc, char **argv)
 
 #if defined(WIN32)
       enabledInstExts.push_back(VK_KHR_WIN32_SURFACE_EXTENSION_NAME);
-#elif defined(__APPLE__)
-      enabledInstExts.push_back(VK_MVK_MACOS_SURFACE_EXTENSION_NAME);
-
-      AppleWindow::Init();
 #elif defined(__linux__)
       enabledInstExts.push_back(VK_KHR_XCB_SURFACE_EXTENSION_NAME);
 
       X11Window::Init();
+#elif defined(__APPLE__)
+      enabledInstExts.push_back(VK_MVK_MACOS_SURFACE_EXTENSION_NAME);
+
+      AppleWindow::Init();
 #else
 #error UNKNOWN PLATFORM
 #endif
@@ -681,10 +681,10 @@ VulkanWindow *VulkanGraphicsTest::MakeWindow(int width, int height, const char *
 {
 #if defined(WIN32)
   GraphicsWindow *platWin = new Win32Window(width, height, title);
-#elif defined(__APPLE__)
-  GraphicsWindow *platWin = new AppleWindow(width, height, title);
 #elif defined(__linux__)
   GraphicsWindow *platWin = new X11Window(width, height, 0, title);
+#elif defined(__APPLE__)
+  GraphicsWindow *platWin = new AppleWindow(width, height, title);
 #else
 #error UNKNOWN PLATFORM
 #endif
@@ -1173,14 +1173,6 @@ VulkanWindow::VulkanWindow(VulkanGraphicsTest *test, GraphicsWindow *win)
     createInfo.hinstance = GetModuleHandleA(NULL);
 
     vkCreateWin32SurfaceKHR(m_Test->instance, &createInfo, NULL, &surface);
-#elif defined(__APPLE__)
-    VkMacOSSurfaceCreateInfoMVK createInfo;
-
-    createInfo.sType = VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK;
-    createInfo.pNext = NULL;
-    createInfo.flags = 0;
-    createInfo.pView = ((AppleWindow *)win)->view;
-    vkCreateMacOSSurfaceMVK(m_Test->instance, &createInfo, NULL, &surface);
 #elif defined(__linux__)
     VkXcbSurfaceCreateInfoKHR createInfo;
 
@@ -1191,6 +1183,14 @@ VulkanWindow::VulkanWindow(VulkanGraphicsTest *test, GraphicsWindow *win)
     createInfo.window = ((X11Window *)win)->xcb.window;
 
     vkCreateXcbSurfaceKHR(m_Test->instance, &createInfo, NULL, &surface);
+#elif defined(__APPLE__)
+    VkMacOSSurfaceCreateInfoMVK createInfo;
+
+    createInfo.sType = VK_STRUCTURE_TYPE_MACOS_SURFACE_CREATE_INFO_MVK;
+    createInfo.pNext = NULL;
+    createInfo.flags = 0;
+    createInfo.pView = ((AppleWindow *)win)->view;
+    vkCreateMacOSSurfaceMVK(m_Test->instance, &createInfo, NULL, &surface);
 #else
 #error UNKNOWN PLATFORM
 #endif
